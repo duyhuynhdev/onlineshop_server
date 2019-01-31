@@ -31,18 +31,45 @@ type Product {
     amount: Int
     currency: String
     category: Category
+    images: [String]
 }
 
 type User {
     id: ID!
     username: String!
-    password: String!
+    password: String
     email: String
     fullname: String
     phone: String
     address: String
     role: Int
 }
+
+type Order {
+    id: ID!
+    created_at: DateTime!
+    user: User
+    delivery_address: String
+    delivery_time: DateTime
+    note: String
+    status: OrderStatus
+    order_item_list: [OrderItem]
+    invoice_url: String
+}
+
+type OrderStatus {
+    code: Int
+    name: String
+}
+
+type OrderItem {
+    id: ID!
+    order: Order
+    product: Product
+    amount: Int
+    price: Float
+}
+
 
 input AuthData {
     username: String!
@@ -54,4 +81,4 @@ type SigninPayload {
     user: User
 }
 
-
+scalar DateTime

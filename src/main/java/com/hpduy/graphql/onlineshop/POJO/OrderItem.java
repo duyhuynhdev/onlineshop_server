@@ -1,19 +1,27 @@
 package com.hpduy.graphql.onlineshop.POJO;
 
 public class OrderItem {
-    private int id;
+    private String id;
     private String product_id;
     private int amount;
-    private float price;
+    private double price;
+    private String order_id;
 
-    public OrderItem(int id, String product_id, int amount, float price) {
+    public OrderItem(String id, String product_id, int amount, double price, String order_id) {
         this.id = id;
         this.product_id = product_id;
         this.amount = amount;
         this.price = price;
+        this.order_id = order_id;
+    }
+    public OrderItem( String product_id, int amount, double price, String order_id) {
+        this.product_id = product_id;
+        this.amount = amount;
+        this.price = price;
+        this.order_id = order_id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -25,7 +33,7 @@ public class OrderItem {
         return amount;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -37,7 +45,19 @@ public class OrderItem {
         this.amount = amount;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(String order_id) {
+        this.order_id = order_id;
     }
 }

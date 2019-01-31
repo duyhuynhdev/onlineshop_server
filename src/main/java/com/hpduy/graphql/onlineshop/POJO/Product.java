@@ -1,5 +1,8 @@
 package com.hpduy.graphql.onlineshop.POJO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Product {
     private String id;
     private String name;
@@ -9,6 +12,8 @@ public class Product {
     private int amount;
     private String category_id;
     private String currency;
+    private List<String> images;
+
 
     public Product(String id, String name, String category_id) {
         this.id = id;
@@ -19,6 +24,7 @@ public class Product {
         this.amount = 0;
         this.category_id= category_id;
         this.currency = "USD";
+        this.images = new ArrayList<>();
     }
     public Product(String id, String name, double price, int amount, String category_id) {
         this.id = id;
@@ -29,6 +35,7 @@ public class Product {
         this.amount = amount;
         this.category_id = category_id;
         this.currency = "USD";
+        this.images = new ArrayList<>();
     }
 
     public Product(String id, String name, String description, double price, int discount, int amount, String category_id, String currency) {
@@ -40,6 +47,7 @@ public class Product {
         this.amount = amount;
         this.category_id = category_id;
         this.currency = currency;
+        this.images = new ArrayList<>();
     }
     public Product(String name, String description, double price, int discount, int amount, String category_id, String currency) {
         this.name = name;
@@ -49,6 +57,7 @@ public class Product {
         this.amount = amount;
         this.category_id = category_id;
         this.currency = currency;
+        this.images = new ArrayList<>();
     }
 
     public String getId() {
@@ -113,5 +122,13 @@ public class Product {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 }
