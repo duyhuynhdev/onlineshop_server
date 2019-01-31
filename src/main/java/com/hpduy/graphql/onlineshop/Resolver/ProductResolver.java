@@ -8,8 +8,8 @@ import com.hpduy.graphql.onlineshop.Repository.CategoryRepository;
 public class ProductResolver  implements GraphQLResolver<Product> {
     private final CategoryRepository categoryRepository;
 
-    public ProductResolver(CategoryRepository userRepository) {
-        this.categoryRepository = userRepository;
+    public ProductResolver(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
     }
 
     public Category category(Product product) {

@@ -53,7 +53,7 @@ type Order {
     delivery_time: DateTime
     note: String
     status: OrderStatus
-    order_item_list: [OrderItem]
+    orderItemList: [OrderItem]
     invoice_url: String
 }
 
