@@ -1,0 +1,57 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    allCategories:[Category]
+    allProducts:[Product]
+    allProductsByCategory(category_id:ID):[Product]
+}
+
+type Mutation {
+    createCategory(name:String!, description:String!): Category
+    createProduct(name:String!, description:String!, category_id:ID, price:Float = 0, amount:Int = 0, discount:Int = 0, currency:String = "USD"): Product
+    createUser( username: String,  password: String,  email: String,  fullname: String,  phone: String,  address: String, role: Int): User
+    signinUser(auth: AuthData): SigninPayload
+}
+
+type Category {
+    id: ID!
+    name: String!
+    description: String
+}
+
+type Product {
+    id: ID!
+    name: String!
+    description: String
+    price: Float
+    discount: Int
+    amount: Int
+    currency: String
+    category: Category
+}
+
+type User {
+    id: ID!
+    username: String!
+    password: String!
+    email: String
+    fullname: String
+    phone: String
+    address: String
+    role: Int
+}
+
+input AuthData {
+    username: String!
+    password: String!
+}
+
+type SigninPayload {
+    token: String
+    user: User
+}
+
+

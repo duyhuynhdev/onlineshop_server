@@ -1,0 +1,86 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    allProducts(filter: ProductFilter, skip: Int = 0, first: Int = 0):[Product]
+        getProductsInCategory(category_id:ID!):[Products]
+}
+
+type Mutation {
+    registerUser(
+}
+
+type Product {
+    id: ID!
+    name: String!
+    description: String
+    price: Float = 0
+    discount: Int = 0
+    amount: Int = 0
+    currency: String
+    category: [Category]
+}
+
+type Category {
+    id: ID!
+    name: String!
+    description: String
+    products: [Product]
+}
+
+type User {
+    id: ID!
+    username: String!
+    password: String
+    email: String
+    fullname: String
+    phone: String
+    address: String
+    role: Int = 0
+    order_list: [Order]
+}
+
+type SigninPayload {
+    token: String
+    user: User
+}
+
+type Order {
+    id: ID!
+    created_at: DateTime!
+    user: User
+    delivery_address: String
+    delivery_time: DateTime
+    note: String
+    status: OrderStatus
+    order_item_list: [OrderItem]
+    invoice_url: String
+}
+
+type OrderStatus {
+    type: Int
+    name: String
+}
+
+type OrderItem {
+    id: ID!
+    order: Order
+    product: Product
+    amount: Int = 0
+    price: Float = 0
+}
+
+input AuthData {
+    username: String!
+    password: String!
+}
+
+
+input ProductFilter{
+     name_contains: String
+     category_id: ID
+}
+
+scalar DateTime
